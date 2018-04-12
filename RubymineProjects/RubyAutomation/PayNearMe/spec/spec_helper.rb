@@ -11,9 +11,12 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+
+require 'rspec'
 require 'rubygems'
 require 'selenium-webdriver'
+require 'test/unit'
+require 'test/unit/assertions'
 
 
 Dir['./spec/Helper/*.rb'].each {|file| require file}
@@ -21,6 +24,7 @@ Dir['./spec/Helper/*.rb'].each {|file| require file}
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.expect_with :minitest
 
   config.before(:each) do
     #Selenium::WebDriver::Chrome.driver_path = File.expand_path("./spec/chromedriver")

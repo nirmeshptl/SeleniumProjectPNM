@@ -1,7 +1,8 @@
+require 'spec_helper'
 require 'rubygems'
 require 'selenium-webdriver'
 include LoginHelper
-include WaitHelper
+include GenericHelper
 
 describe 'Login:' do
 
