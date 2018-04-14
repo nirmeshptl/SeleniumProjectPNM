@@ -7,26 +7,34 @@ include GenericHelper
 describe 'Login:' do
 
   it 'should allow user to login with correct username and password' do
-    wait_true(15) {@driver.find_element(:id,'menu-item-2373').displayed? }
-    @driver.find_element(:id,'menu-item-2373').click
+
+    login_link=wait_true(10) {
+      element= @driver.find_element(:css,'.login-footer > a:nth-child(1)')
+      element if element.displayed?
+    }
+    login_link.click
+
+    username_field=wait_true(15) {
+      element=@driver.find_element(:id,'input-email')
+      element if  element.displayed?
+    }
+    username_field.send_keys('test1@gmail.com')
 
 
-    wait_true(15) {@driver.find_element(:id,'user_email').displayed? }
-    @driver.find_element(:id,'user_email').send_keys('nirmeshptl@gmail.com')
+    pswd_field=wait_true(15) {
+      element=@driver.find_element(:id,'input-password')
+      element if element.displayed?
+    }
+    pswd_field.send_keys("1qaz@WSX")
 
+    login_btn=wait_true(15) {
+      element= @driver.find_element(:css,'#button-login')
+      element if element.displayed?
+    }
+    login_btn.click
 
-    wait_true(15) {@driver.find_element(:name,'user[password]').displayed? }
-    @driver.find_element(:name,'user[password]').send_keys("1qaz@WSX")
-
-    wait_true(15) {@driver.find_element(:css,'input.button.primary').displayed? }
-    @driver.find_element(:css,'input.button.primary').click
-
-    sleep 10
 
   end
 
-  it 'should now allow user to login with incorrect username ' do
-
-  end
 
 end
