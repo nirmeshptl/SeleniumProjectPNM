@@ -19,6 +19,7 @@ require 'test/unit'
 require 'test/unit/assertions'
 
 
+
 Dir['./spec/Helper/*.rb'].each {|file| require file}
 
 
@@ -28,7 +29,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     #Selenium::WebDriver::Chrome.driver_path = File.expand_path("./spec/chromedriver")
-    @driver=Selenium::WebDriver.for :firefox #, switches:%w[--ignore-certificate-errors --disable-translate --disable-infobars]
+    @driver=Selenium::WebDriver.for :chrome #, switches:%w[--ignore-certificate-errors --disable-translate --disable-infobars]
     @driver.get "https://www.paynearme.com/consumers/#/register"
 
      #@randNum=Random.new
